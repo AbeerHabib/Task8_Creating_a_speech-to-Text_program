@@ -2,11 +2,11 @@
 
 In this task I converted speech to voice using IBM Watson Speech to Text and Python, what is this service? IBM Watson Speech to Text (STT) is a service on the IBM Cloud that enables you to easily convert audio and voice into written text.
 
-Steps:
+**Steps:**
 
 1. Set up the IBM Watson Speech to Text service from https://cloud.ibm.com/catalog, and keep the key, link and region.
 
-2. Open CMD or Visual Studio Code
+2. Open CMD or the terminal in Visual Studio Code.
 
 3. Clone STT Code from https://github.com/IBM/watson-streaming-stt:
 ```
@@ -43,4 +43,9 @@ python.transcribr.py -t 10
 ```
 *10 means the time of the recording is 10 seconds
 
+
+**Result:**
+
+![result1](https://user-images.githubusercontent.com/85819577/125170189-69304280-e1b6-11eb-8f26-4afc6212287b.png)
+![result2](https://user-images.githubusercontent.com/85819577/125170192-6b929c80-e1b6-11eb-9828-4850af0f3738.png)
 
