@@ -49,3 +49,53 @@ python transcribe.py -t 10
 ![result1](https://user-images.githubusercontent.com/85819577/125170189-69304280-e1b6-11eb-8f26-4afc6212287b.png)
 ![result2](https://user-images.githubusercontent.com/85819577/125170192-6b929c80-e1b6-11eb-9828-4850af0f3738.png)
 
+
+
+
+________________________________________________________________________________________________________________
+
+
+
+
+**saving the text as mp3 file**
+
+I was trying a lot to convert the text to audio, but it didn't work with me, everything was going ok but the mp3 file looking empty.
+
+First, I added this part of the code at the beginning:
+
+```
+from ibm_watson import TextToSpeechV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+```
+```
+apikey = 'LNUptqkjVdfA7-3fLeddN0yhKiZDXDdmoqksjGcjsCQL'
+url = 'https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/9d44702e-5e18-463b-950e-dae8d3bff813'        
+```
+```
+authenticator = IAMAuthenticator(apikey)
+tts = TextToSpeechV1(authenticator=authenticator)
+tts.set_service_url(url) 
+```
+
+Then I add this code, it works to open the previously written text:
+```
+with open('./TranscribedText.txt', 'r') as f:
+        text = f.readlines()
+        text = [line.replace('\n', '') for line in text]
+        text = ''.join(str(line) for line in text)
+```
+
+Then I added this code, and it converts text to audio:
+```
+with open('./voice.mp3', 'wb') as audio_file:
+        res = tts.synthesize(text, accept='audio/mp3', voice='en-US_AllisonV3Voice').get_result()
+        audio_file.write(result.content)
+```
+
+
+**Result:**
+
+
+![stt](https://user-images.githubusercontent.com/85819577/126882386-77e6222f-374c-44ee-a84e-0a66cecf851e.png)
+![text](https://user-images.githubusercontent.com/85819577/126882392-1b16c19f-25d8-4946-9e03-bba946df5231.png)
+
