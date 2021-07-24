@@ -39,7 +39,7 @@ pipwin install pyaudio
 
 8. run live transcription: 
 ```
-python.transcribr.py -t 10
+python transcribe.py -t 10
 ```
 *10 means the time of the recording is 10 seconds
 
